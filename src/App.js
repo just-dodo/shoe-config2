@@ -81,7 +81,7 @@ function Picker() {
           <h1>{snap.current}</h1>
         </>
       ) : (
-        <h1>👇 Click 👇</h1>
+        <h1>Click👇</h1>
       )}
     </div>
   )
