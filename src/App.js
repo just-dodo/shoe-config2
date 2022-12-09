@@ -1,6 +1,6 @@
 import { Suspense, useRef, useState, useEffect } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
-import { ContactShadows, Environment, useGLTF, OrbitControls } from "@react-three/drei"
+import { ContactShadows, Environment, useGLTF, OrbitControls, Text } from "@react-three/drei"
 import { HexColorPicker } from "react-colorful"
 import { proxy, useSnapshot } from "valtio"
 
@@ -72,9 +72,17 @@ function Shoe() {
 function Picker() {
   const snap = useSnapshot(state)
   return (
-    <div style={{ display: snap.current ? "block" : "none" }}>
-      <HexColorPicker className="picker" color={snap.items[snap.current]} onChange={(color) => (state.items[snap.current] = color)} />
-      <h1>{snap.current}</h1>
+    <div style={{
+      width: '100%',
+    }}>
+      {snap.current ? (
+        <>
+          <HexColorPicker className="picker" color={snap.items[snap.current]} onChange={(color) => (state.items[snap.current] = color)} />
+          <h1>{snap.current}</h1>
+        </>
+      ) : (
+        <h1>👇 Click 👇</h1>
+      )}
     </div>
   )
 }
